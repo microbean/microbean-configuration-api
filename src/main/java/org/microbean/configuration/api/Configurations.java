@@ -25,6 +25,9 @@ import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * A single source for configuration values suitable for an
  * application.
@@ -37,6 +40,14 @@ import java.util.Set;
 public abstract class Configurations {
 
 
+  /**
+   * A {@link Logger} for this {@link Configurations}.
+   *
+   * <p>This field is never {@code null}.</p>
+   */
+  protected final Logger logger;
+  
+
   /*
    * Constructors.
    */
@@ -47,6 +58,7 @@ public abstract class Configurations {
    */
   protected Configurations() {
     super();
+    this.logger = LoggerFactory.getLogger(this.getClass());
   }
 
 

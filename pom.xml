@@ -25,13 +25,49 @@
     <tag>HEAD</tag>
   </scm>
 
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.22</version>
+        <type>jar</type>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.22</version>
+        <type>jar</type>
+      </dependency>
+      
+    </dependencies>    
+  </dependencyManagement>
+  
   <dependencies>
+
+    <!-- Compile-scoped dependencies. -->
+    
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
 
     <!-- Test-scoped dependencies. -->
 
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
       <type>jar</type>
       <scope>test</scope>
     </dependency>
@@ -71,6 +107,9 @@
     <findbugs.effort>Max</findbugs.effort>
     <findbugs.excludeFilterFile>src/findbugs/exclude.xml</findbugs.excludeFilterFile>
     <findbugs.threshold>Medium</findbugs.threshold>
+
+    <!-- maven-javadoc-plugin properties; see https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
+    <links>https://www.slf4j.org/api/</links>
     
   </properties>
   
