@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
  * A single source for configuration values suitable for an
  * application.
  *
- * @author <a href="http://about.me/lairdnelson"
+ * @author <a href="https://about.me/lairdnelson"
  * target="_parent">Laird Nelson</a>
  *
  * @see #getValue(Map, String, Type, String)
