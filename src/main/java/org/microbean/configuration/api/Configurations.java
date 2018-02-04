@@ -1,6 +1,6 @@
 /* -*- mode: Java; c-basic-offset: 2; indent-tabs-mode: nil; coding: utf-8-unix -*-
  *
- * Copyright © 2017 MicroBean.
+ * Copyright © 2017-2018 microBean.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ import java.util.ServiceConfigurationError;
 import java.util.ServiceLoader;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A single source for configuration values suitable for an
@@ -44,6 +44,8 @@ public abstract class Configurations {
    * A {@link Logger} for this {@link Configurations}.
    *
    * <p>This field is never {@code null}.</p>
+   *
+   * @see #createLogger()
    */
   protected final Logger logger;
   
@@ -55,10 +57,18 @@ public abstract class Configurations {
 
   /**
    * Creates a new {@link Configurations}.
+   *
+   * @exception IllegalStateException if the {@link #createLogger()}
+   * method returns {@code null}
+   *
+   * @see #createLogger()
    */
   protected Configurations() {
     super();
-    this.logger = LoggerFactory.getLogger(this.getClass());
+    this.logger = this.createLogger();
+    if (this.logger == null) {
+      throw new IllegalStateException("createLogger() == null");
+    }
   }
 
 
@@ -67,6 +77,20 @@ public abstract class Configurations {
    */
   
 
+  /**
+   * Returns a {@link Logger} for use by this {@link Configurations}
+   * implementation.
+   *
+   * <p>This method never returns {@code null}.</p>
+   *
+   * <p>Overrides of this method must not return {@code null}.</p>
+   *
+   * @return a non-{@code null} {@link Logger}
+   */
+  protected Logger createLogger() {
+    return Logger.getLogger(this.getClass().getName());
+  }
+  
   /**
    * Returns a non-{@code null}, {@linkplain
    * Collections#unmodifiableSet(Set) immutable} {@link Set} of {@link
@@ -683,6 +707,12 @@ public abstract class Configurations {
    * @see ServiceLoader
    */
   public static final Configurations newInstance() {
+    final String cn = Configurations.class.getName();
+    final Logger logger = Logger.getLogger(cn);    
+    final String mn = "newInstance";    
+    if (logger.isLoggable(Level.FINER)) {
+      logger.entering(cn, mn);
+    }
     Configurations returnValue = null;
     final ServiceLoader<Configurations> configurationsLoader = ServiceLoader.load(Configurations.class);
     assert configurationsLoader != null;
@@ -697,6 +727,9 @@ public abstract class Configurations {
     }
     if (returnValue == null) {
       throw new ConfigurationException("No " + Configurations.class.getName() + " implementation found in any META-INF/services/" + Configurations.class.getName() + " service provider resources");
+    }
+    if (logger.isLoggable(Level.FINER)) {
+      logger.exiting(cn, mn, returnValue);
     }
     return returnValue;
   }

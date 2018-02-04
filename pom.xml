@@ -12,10 +12,10 @@
   <parent>
     <groupId>org.microbean</groupId>
     <artifactId>microbean-pluginmanagement-pom</artifactId>
-    <version>3</version>
+    <version>5</version>
   </parent>
 
-  <name>MicroBean Configuration API</name>
+  <name>microBean Configuration API</name>
   <description>${project.name}</description>
   <url>http://microbean.github.io/${project.artifactId}</url>
 
@@ -31,13 +31,6 @@
 
       <dependency>
         <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-api</artifactId>
-        <version>1.7.25</version>
-        <type>jar</type>
-      </dependency>
-
-      <dependency>
-        <groupId>org.slf4j</groupId>
         <artifactId>slf4j-simple</artifactId>
         <version>1.7.25</version>
         <type>jar</type>
@@ -47,15 +40,6 @@
   </dependencyManagement>
   
   <dependencies>
-
-    <!-- Compile-scoped dependencies. -->
-    
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
 
     <!-- Test-scoped dependencies. -->
 
@@ -122,6 +106,7 @@
     <findbugs.threshold>Medium</findbugs.threshold>
 
     <!-- maven-javadoc-plugin properties; see https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
+    <doctitle>&lt;a href="${project.url}" target="_parent"&gt;${project.artifactId}&lt;/a&gt; ${project.version} &lt;a href="https://travis-ci.org/microbean/${project.artifactId}" target="_parent"&gt;&lt;img src="https://travis-ci.org/microbean/${project.artifactId}.svg?branch=master"&gt;&lt;/a&gt;</doctitle>
     <links>https://www.slf4j.org/api/</links>
 
     <!-- maven-release-plugin properties -->

@@ -1,10 +1,13 @@
-# MicroBean Configuration API
+# microBean Configuration API
 
-The MicroBean Configuration API project provides API classes and
+[![Build Status](https://travis-ci.org/microbean/microbean-configuration-api.svg?branch=master)](https://travis-ci.org/microbean/microbean-configuration-api)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.microbean/microbean-configuration-api/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.microbean/microbean-configuration-api)
+
+The microBean Configuration API project provides API classes and
 interfaces for helping Java SE programs acquire configuration
 information.
 
-Unlike other configuration frameworks and APIs, the MicroBean
+Unlike other configuration frameworks and APIs, the microBean
 Configuration API is oriented around the concept of _configuration
 coordinates_ within _configuration space_.
 
