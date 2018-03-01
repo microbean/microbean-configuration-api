@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>microbean-configuration-api</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
 
   <parent>
     <groupId>org.microbean</groupId>
@@ -103,7 +103,7 @@
 
     <!-- maven-javadoc-plugin properties; see https://maven.apache.org/plugins/maven-javadoc-plugin/javadoc-mojo.html -->
     <doctitle>&lt;a href="${project.url}" target="_parent"&gt;${project.artifactId}&lt;/a&gt; ${project.version} &lt;a href="https://travis-ci.org/microbean/${project.artifactId}" target="_parent"&gt;&lt;img src="https://travis-ci.org/microbean/${project.artifactId}.svg?branch=master"&gt;&lt;/a&gt;</doctitle>
-    <links>https://www.slf4j.org/api/</links>
+    <links></links>
 
     <!-- maven-release-plugin properties -->
     <goals>deploy,site-deploy</goals>
