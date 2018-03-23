@@ -1111,6 +1111,26 @@ public abstract class Configurations {
     return returnValue;
   }
 
+  /**
+   * Returns an {@linkplain Collections#unmodifiableSet(Set)
+   * unmodifiable <code>Set</code>} of names of {@link
+   * ConfigurationValue}s that might be returned by this {@link
+   * Configurations} instance.
+   *
+   * <p>Implementations of this method must not return {@code
+   * null}.</p>
+   *
+   * <p>Just because a name appears in the returned {@link Set} does
+   * <em>not</em> mean that a {@link ConfigurationValue} <em>will</em>
+   * be returned for it in a location in configuration space
+   * identified by any arbitrary set of configuration coordinates.</p>
+   *
+   * @return a non-{@code null} {@link Set} of names of {@link
+   * ConfigurationValue}s
+   */
+  public abstract Set<String> getNames();
+
+  
   /*
    * Static methods.
    */
