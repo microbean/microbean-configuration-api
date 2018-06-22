@@ -41,6 +41,19 @@ import java.util.logging.Logger;
 public abstract class Configurations {
 
 
+  /*
+   * Static fields.
+   */
+
+
+  private static volatile ServiceLoader<Configurations> configurationsLoader;
+
+
+  /*
+   * Instance fields.
+   */
+
+
   /**
    * A {@link Logger} for this {@link Configurations}.
    *
@@ -49,7 +62,7 @@ public abstract class Configurations {
    * @see #createLogger()
    */
   protected final Logger logger;
-  
+
 
   /*
    * Constructors.
@@ -76,7 +89,7 @@ public abstract class Configurations {
   /*
    * Instance methods.
    */
-  
+
 
   /**
    * Returns a {@link Logger} for use by this {@link Configurations}
@@ -91,7 +104,7 @@ public abstract class Configurations {
   protected Logger createLogger() {
     return Logger.getLogger(this.getClass().getName());
   }
-  
+
   /**
    * Returns a non-{@code null}, {@linkplain
    * Collections#unmodifiableSet(Set) immutable} {@link Set} of {@link
@@ -789,7 +802,7 @@ public abstract class Configurations {
   public final String getValue(final Collection<String> names, final String defaultValue) {
     return this.getValue(this.getConfigurationCoordinates(), names, String.class, defaultValue);
   }
-  
+
   /**
    * Returns a configuration value corresponding to the configuration
    * property suitable for the supplied {@code names}, converted, if
@@ -833,7 +846,7 @@ public abstract class Configurations {
     return this.getValue(this.getConfigurationCoordinates(), names, type, defaultValue);
   }
 
-  
+
   public final <T> T getValue(final Collection<String> names, final TypeLiteral<T> typeLiteral, final String defaultValue) {
     return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);
   }
@@ -1074,12 +1087,12 @@ public abstract class Configurations {
    */
   public final <T> T getValue(final Map<String, String> configurationCoordinates, final Collection<String> names, final Type type, final String defaultValue) {
     final String cn = this.getClass().getName();
-    final Logger logger = Logger.getLogger(cn);    
-    final String mn = "getValue";    
+    final Logger logger = Logger.getLogger(cn);
+    final String mn = "getValue";
     if (logger.isLoggable(Level.FINER)) {
       logger.entering(cn, mn, new Object[] { configurationCoordinates, names, type, defaultValue });
     }
-    
+
     T returnValue = null;
     if (names == null || names.isEmpty()) {
       returnValue = this.getValue(configurationCoordinates, (String)null, type, defaultValue);
@@ -1130,7 +1143,7 @@ public abstract class Configurations {
    */
   public abstract Set<String> getNames();
 
-  
+
   /*
    * Static methods.
    */
@@ -1154,14 +1167,18 @@ public abstract class Configurations {
    */
   public static final Configurations newInstance() {
     final String cn = Configurations.class.getName();
-    final Logger logger = Logger.getLogger(cn);    
-    final String mn = "newInstance";    
+    final Logger logger = Logger.getLogger(cn);
+    final String mn = "newInstance";
     if (logger.isLoggable(Level.FINER)) {
       logger.entering(cn, mn);
     }
     Configurations returnValue = null;
-    final ServiceLoader<Configurations> configurationsLoader = ServiceLoader.load(Configurations.class);
-    assert configurationsLoader != null;
+    ServiceLoader<Configurations> configurationsLoader = Configurations.configurationsLoader;
+    if (configurationsLoader == null) {
+      configurationsLoader = ServiceLoader.load(Configurations.class);
+      assert configurationsLoader != null;
+      Configurations.configurationsLoader = configurationsLoader;
+    }
     final Iterator<Configurations> configurationsIterator = configurationsLoader.iterator();
     assert configurationsIterator != null;
     while (returnValue == null && configurationsIterator.hasNext()) {
@@ -1179,5 +1196,5 @@ public abstract class Configurations {
     }
     return returnValue;
   }
-  
+
 }
