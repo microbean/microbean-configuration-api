@@ -854,358 +854,357 @@
 <span class="sourceLineNo">846</span>    return this.getValue(this.getConfigurationCoordinates(), names, type, defaultValue);<a name="line.846"></a>
 <span class="sourceLineNo">847</span>  }<a name="line.847"></a>
 <span class="sourceLineNo">848</span><a name="line.848"></a>
-<span class="sourceLineNo">849</span><a name="line.849"></a>
-<span class="sourceLineNo">850</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral, final String defaultValue) {<a name="line.850"></a>
-<span class="sourceLineNo">851</span>    return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);<a name="line.851"></a>
-<span class="sourceLineNo">852</span>  }<a name="line.852"></a>
-<span class="sourceLineNo">853</span><a name="line.853"></a>
-<span class="sourceLineNo">854</span>  /**<a name="line.854"></a>
-<span class="sourceLineNo">855</span>   * Returns a configuration value corresponding to the configuration<a name="line.855"></a>
-<span class="sourceLineNo">856</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.856"></a>
-<span class="sourceLineNo">857</span>   * possible, to the type represented by the supplied {@code<a name="line.857"></a>
-<span class="sourceLineNo">858</span>   * type}, or {@code null}.<a name="line.858"></a>
-<span class="sourceLineNo">859</span>   *<a name="line.859"></a>
-<span class="sourceLineNo">860</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.860"></a>
-<span class="sourceLineNo">861</span>   *<a name="line.861"></a>
-<span class="sourceLineNo">862</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.862"></a>
-<span class="sourceLineNo">863</span>   * value should be converted<a name="line.863"></a>
-<span class="sourceLineNo">864</span>   *<a name="line.864"></a>
-<span class="sourceLineNo">865</span>   * @param names names of configuration properties for which a value<a name="line.865"></a>
-<span class="sourceLineNo">866</span>   * will be returned; each element will be tried in turn; must not be<a name="line.866"></a>
-<span class="sourceLineNo">867</span>   * {@code null}<a name="line.867"></a>
-<span class="sourceLineNo">868</span>   *<a name="line.868"></a>
-<span class="sourceLineNo">869</span>   * @param type a {@link Class} representing the type to which the<a name="line.869"></a>
-<span class="sourceLineNo">870</span>   * configuration value will be converted; must not be {@code null}<a name="line.870"></a>
-<span class="sourceLineNo">871</span>   *<a name="line.871"></a>
-<span class="sourceLineNo">872</span>   * @return the configuration value, or {@code null}<a name="line.872"></a>
-<span class="sourceLineNo">873</span>   *<a name="line.873"></a>
-<span class="sourceLineNo">874</span>   * @exception NullPointerException if {@code names} or {@code type}<a name="line.874"></a>
-<span class="sourceLineNo">875</span>   * is {@code null}<a name="line.875"></a>
-<span class="sourceLineNo">876</span>   *<a name="line.876"></a>
-<span class="sourceLineNo">877</span>   * @exception ConversionException if type conversion could not occur<a name="line.877"></a>
-<span class="sourceLineNo">878</span>   * for any reason<a name="line.878"></a>
-<span class="sourceLineNo">879</span>   *<a name="line.879"></a>
-<span class="sourceLineNo">880</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.880"></a>
-<span class="sourceLineNo">881</span>   * values were found that could be suitable<a name="line.881"></a>
-<span class="sourceLineNo">882</span>   *<a name="line.882"></a>
-<span class="sourceLineNo">883</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.883"></a>
-<span class="sourceLineNo">884</span>   */<a name="line.884"></a>
-<span class="sourceLineNo">885</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final Class&lt;T&gt; type) {<a name="line.885"></a>
-<span class="sourceLineNo">886</span>    return this.getValue(this.getConfigurationCoordinates(), names, type, null);<a name="line.886"></a>
-<span class="sourceLineNo">887</span>  }<a name="line.887"></a>
-<span class="sourceLineNo">888</span><a name="line.888"></a>
-<span class="sourceLineNo">889</span>  /**<a name="line.889"></a>
-<span class="sourceLineNo">890</span>   * Returns a configuration value corresponding to the configuration<a name="line.890"></a>
-<span class="sourceLineNo">891</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.891"></a>
-<span class="sourceLineNo">892</span>   * possible, to the type represented by the supplied {@code<a name="line.892"></a>
-<span class="sourceLineNo">893</span>   * type}, or {@code null}.<a name="line.893"></a>
-<span class="sourceLineNo">894</span>   *<a name="line.894"></a>
-<span class="sourceLineNo">895</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.895"></a>
-<span class="sourceLineNo">896</span>   *<a name="line.896"></a>
-<span class="sourceLineNo">897</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.897"></a>
-<span class="sourceLineNo">898</span>   * value should be converted<a name="line.898"></a>
-<span class="sourceLineNo">899</span>   *<a name="line.899"></a>
-<span class="sourceLineNo">900</span>   * @param names names of configuration properties for which a value<a name="line.900"></a>
-<span class="sourceLineNo">901</span>   * will be returned; each element will be tried in turn; must not be<a name="line.901"></a>
-<span class="sourceLineNo">902</span>   * {@code null}<a name="line.902"></a>
-<span class="sourceLineNo">903</span>   *<a name="line.903"></a>
-<span class="sourceLineNo">904</span>   * @param type a {@link Type} representing the type to which the<a name="line.904"></a>
-<span class="sourceLineNo">905</span>   * configuration value will be converted; must not be {@code null}<a name="line.905"></a>
-<span class="sourceLineNo">906</span>   *<a name="line.906"></a>
-<span class="sourceLineNo">907</span>   * @return the configuration value, or {@code null}<a name="line.907"></a>
-<span class="sourceLineNo">908</span>   *<a name="line.908"></a>
-<span class="sourceLineNo">909</span>   * @exception NullPointerException if {@code names} or {@code type}<a name="line.909"></a>
-<span class="sourceLineNo">910</span>   * is {@code null}<a name="line.910"></a>
-<span class="sourceLineNo">911</span>   *<a name="line.911"></a>
-<span class="sourceLineNo">912</span>   * @exception ConversionException if type conversion could not occur<a name="line.912"></a>
-<span class="sourceLineNo">913</span>   * for any reason<a name="line.913"></a>
-<span class="sourceLineNo">914</span>   *<a name="line.914"></a>
-<span class="sourceLineNo">915</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.915"></a>
-<span class="sourceLineNo">916</span>   * values were found that could be suitable<a name="line.916"></a>
-<span class="sourceLineNo">917</span>   *<a name="line.917"></a>
-<span class="sourceLineNo">918</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.918"></a>
-<span class="sourceLineNo">919</span>   */<a name="line.919"></a>
-<span class="sourceLineNo">920</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final Type type) {<a name="line.920"></a>
-<span class="sourceLineNo">921</span>    return this.getValue(this.getConfigurationCoordinates(), names, type, null);<a name="line.921"></a>
-<span class="sourceLineNo">922</span>  }<a name="line.922"></a>
-<span class="sourceLineNo">923</span><a name="line.923"></a>
-<span class="sourceLineNo">924</span>  /**<a name="line.924"></a>
-<span class="sourceLineNo">925</span>   * Returns a configuration value corresponding to the configuration<a name="line.925"></a>
-<span class="sourceLineNo">926</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.926"></a>
-<span class="sourceLineNo">927</span>   * possible, to the type represented by the supplied {@code<a name="line.927"></a>
-<span class="sourceLineNo">928</span>   * typeLiteral}, or {@code null}.<a name="line.928"></a>
-<span class="sourceLineNo">929</span>   *<a name="line.929"></a>
-<span class="sourceLineNo">930</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.930"></a>
-<span class="sourceLineNo">931</span>   *<a name="line.931"></a>
-<span class="sourceLineNo">932</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.932"></a>
-<span class="sourceLineNo">933</span>   * value should be converted<a name="line.933"></a>
-<span class="sourceLineNo">934</span>   *<a name="line.934"></a>
-<span class="sourceLineNo">935</span>   * @param names names of configuration properties for which a value<a name="line.935"></a>
-<span class="sourceLineNo">936</span>   * will be returned; each element will be tried in turn; must not be<a name="line.936"></a>
-<span class="sourceLineNo">937</span>   * {@code null}<a name="line.937"></a>
-<span class="sourceLineNo">938</span>   *<a name="line.938"></a>
-<span class="sourceLineNo">939</span>   * @param typeLiteral a {@link TypeLiteral} representing the type to which the<a name="line.939"></a>
-<span class="sourceLineNo">940</span>   * configuration value will be converted; must not be {@code null}<a name="line.940"></a>
-<span class="sourceLineNo">941</span>   *<a name="line.941"></a>
-<span class="sourceLineNo">942</span>   * @return the configuration value, or {@code null}<a name="line.942"></a>
-<span class="sourceLineNo">943</span>   *<a name="line.943"></a>
-<span class="sourceLineNo">944</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.944"></a>
-<span class="sourceLineNo">945</span>   * is {@code null}<a name="line.945"></a>
-<span class="sourceLineNo">946</span>   *<a name="line.946"></a>
-<span class="sourceLineNo">947</span>   * @exception ConversionException if type conversion could not occur<a name="line.947"></a>
-<span class="sourceLineNo">948</span>   * for any reason<a name="line.948"></a>
-<span class="sourceLineNo">949</span>   *<a name="line.949"></a>
-<span class="sourceLineNo">950</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.950"></a>
-<span class="sourceLineNo">951</span>   * values were found that could be suitable<a name="line.951"></a>
-<span class="sourceLineNo">952</span>   *<a name="line.952"></a>
-<span class="sourceLineNo">953</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.953"></a>
-<span class="sourceLineNo">954</span>   */<a name="line.954"></a>
-<span class="sourceLineNo">955</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral) {<a name="line.955"></a>
-<span class="sourceLineNo">956</span>    return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), null);<a name="line.956"></a>
-<span class="sourceLineNo">957</span>  }<a name="line.957"></a>
-<span class="sourceLineNo">958</span><a name="line.958"></a>
-<span class="sourceLineNo">959</span>  /**<a name="line.959"></a>
-<span class="sourceLineNo">960</span>   * Returns a configuration value corresponding to the configuration<a name="line.960"></a>
-<span class="sourceLineNo">961</span>   * property suitable for the supplied {@code<a name="line.961"></a>
-<span class="sourceLineNo">962</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.962"></a>
-<span class="sourceLineNo">963</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.963"></a>
-<span class="sourceLineNo">964</span>   * converted, if possible, to the type represented by the supplied<a name="line.964"></a>
-<span class="sourceLineNo">965</span>   * {@code type}.<a name="line.965"></a>
-<span class="sourceLineNo">966</span>   *<a name="line.966"></a>
-<span class="sourceLineNo">967</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.967"></a>
-<span class="sourceLineNo">968</span>   *<a name="line.968"></a>
-<span class="sourceLineNo">969</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.969"></a>
-<span class="sourceLineNo">970</span>   * value should be converted<a name="line.970"></a>
-<span class="sourceLineNo">971</span>   *<a name="line.971"></a>
-<span class="sourceLineNo">972</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.972"></a>
-<span class="sourceLineNo">973</span>   * configuration coordinates in effect for this request; may be<a name="line.973"></a>
-<span class="sourceLineNo">974</span>   * {@code null}<a name="line.974"></a>
-<span class="sourceLineNo">975</span>   *<a name="line.975"></a>
-<span class="sourceLineNo">976</span>   * @param names names of configuration properties for which a value<a name="line.976"></a>
-<span class="sourceLineNo">977</span>   * will be returned; each element will be tried in turn; must not be<a name="line.977"></a>
-<span class="sourceLineNo">978</span>   * {@code null}<a name="line.978"></a>
-<span class="sourceLineNo">979</span>   *<a name="line.979"></a>
-<span class="sourceLineNo">980</span>   * @param type a {@link Class} representing the type to which the<a name="line.980"></a>
-<span class="sourceLineNo">981</span>   * configuration value will be converted; must not be {@code null}<a name="line.981"></a>
-<span class="sourceLineNo">982</span>   *<a name="line.982"></a>
-<span class="sourceLineNo">983</span>   * @param defaultValue the value that will be converted and returned<a name="line.983"></a>
-<span class="sourceLineNo">984</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.984"></a>
-<span class="sourceLineNo">985</span>   *<a name="line.985"></a>
-<span class="sourceLineNo">986</span>   * @return the configuration value, or {@code null}<a name="line.986"></a>
-<span class="sourceLineNo">987</span>   *<a name="line.987"></a>
-<span class="sourceLineNo">988</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.988"></a>
-<span class="sourceLineNo">989</span>   * is {@code null}<a name="line.989"></a>
-<span class="sourceLineNo">990</span>   *<a name="line.990"></a>
-<span class="sourceLineNo">991</span>   * @exception ConversionException if type conversion could not occur<a name="line.991"></a>
-<span class="sourceLineNo">992</span>   * for any reason<a name="line.992"></a>
-<span class="sourceLineNo">993</span>   *<a name="line.993"></a>
-<span class="sourceLineNo">994</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.994"></a>
-<span class="sourceLineNo">995</span>   * values were found that could be suitable<a name="line.995"></a>
-<span class="sourceLineNo">996</span>   *<a name="line.996"></a>
-<span class="sourceLineNo">997</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.997"></a>
-<span class="sourceLineNo">998</span>   */<a name="line.998"></a>
-<span class="sourceLineNo">999</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final Class&lt;T&gt; type, final String defaultValue) {<a name="line.999"></a>
-<span class="sourceLineNo">1000</span>    return this.getValue(configurationCoordinates, names, (Type)type, defaultValue);<a name="line.1000"></a>
-<span class="sourceLineNo">1001</span>  }<a name="line.1001"></a>
-<span class="sourceLineNo">1002</span><a name="line.1002"></a>
-<span class="sourceLineNo">1003</span>   /**<a name="line.1003"></a>
-<span class="sourceLineNo">1004</span>   * Returns a configuration value corresponding to the configuration<a name="line.1004"></a>
-<span class="sourceLineNo">1005</span>   * property suitable for the supplied {@code<a name="line.1005"></a>
-<span class="sourceLineNo">1006</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.1006"></a>
-<span class="sourceLineNo">1007</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.1007"></a>
-<span class="sourceLineNo">1008</span>   * converted, if possible, to the type represented by the supplied<a name="line.1008"></a>
-<span class="sourceLineNo">1009</span>   * {@code type}.<a name="line.1009"></a>
-<span class="sourceLineNo">1010</span>   *<a name="line.1010"></a>
-<span class="sourceLineNo">1011</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.1011"></a>
-<span class="sourceLineNo">1012</span>   *<a name="line.1012"></a>
-<span class="sourceLineNo">1013</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.1013"></a>
-<span class="sourceLineNo">1014</span>   * value should be converted<a name="line.1014"></a>
-<span class="sourceLineNo">1015</span>   *<a name="line.1015"></a>
-<span class="sourceLineNo">1016</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.1016"></a>
-<span class="sourceLineNo">1017</span>   * configuration coordinates in effect for this request; may be<a name="line.1017"></a>
-<span class="sourceLineNo">1018</span>   * {@code null}<a name="line.1018"></a>
-<span class="sourceLineNo">1019</span>   *<a name="line.1019"></a>
-<span class="sourceLineNo">1020</span>   * @param names names of configuration properties for which a value<a name="line.1020"></a>
-<span class="sourceLineNo">1021</span>   * will be returned; each element will be tried in turn; must not be<a name="line.1021"></a>
-<span class="sourceLineNo">1022</span>   * {@code null}<a name="line.1022"></a>
-<span class="sourceLineNo">1023</span>   *<a name="line.1023"></a>
-<span class="sourceLineNo">1024</span>   * @param typeLiteral a {@link TypeLiteral} representing the type to which<a name="line.1024"></a>
-<span class="sourceLineNo">1025</span>   * the configuration value will be converted; must not be {@code<a name="line.1025"></a>
-<span class="sourceLineNo">1026</span>   * null}<a name="line.1026"></a>
-<span class="sourceLineNo">1027</span>   *<a name="line.1027"></a>
-<span class="sourceLineNo">1028</span>   * @param defaultValue the value that will be converted and returned<a name="line.1028"></a>
-<span class="sourceLineNo">1029</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.1029"></a>
-<span class="sourceLineNo">1030</span>   *<a name="line.1030"></a>
-<span class="sourceLineNo">1031</span>   * @return the configuration value, or {@code null}<a name="line.1031"></a>
-<span class="sourceLineNo">1032</span>   *<a name="line.1032"></a>
-<span class="sourceLineNo">1033</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.1033"></a>
-<span class="sourceLineNo">1034</span>   * is {@code null}<a name="line.1034"></a>
-<span class="sourceLineNo">1035</span>   *<a name="line.1035"></a>
-<span class="sourceLineNo">1036</span>   * @exception ConversionException if type conversion could not occur<a name="line.1036"></a>
-<span class="sourceLineNo">1037</span>   * for any reason<a name="line.1037"></a>
-<span class="sourceLineNo">1038</span>   *<a name="line.1038"></a>
-<span class="sourceLineNo">1039</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.1039"></a>
-<span class="sourceLineNo">1040</span>   * values were found that could be suitable<a name="line.1040"></a>
-<span class="sourceLineNo">1041</span>   *<a name="line.1041"></a>
-<span class="sourceLineNo">1042</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.1042"></a>
-<span class="sourceLineNo">1043</span>   */<a name="line.1043"></a>
-<span class="sourceLineNo">1044</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral, final String defaultValue) {<a name="line.1044"></a>
-<span class="sourceLineNo">1045</span>    return this.getValue(configurationCoordinates, names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);<a name="line.1045"></a>
-<span class="sourceLineNo">1046</span>  }<a name="line.1046"></a>
-<span class="sourceLineNo">1047</span><a name="line.1047"></a>
-<span class="sourceLineNo">1048</span>  /**<a name="line.1048"></a>
-<span class="sourceLineNo">1049</span>   * Returns a configuration value corresponding to the configuration<a name="line.1049"></a>
-<span class="sourceLineNo">1050</span>   * property suitable for the supplied {@code<a name="line.1050"></a>
-<span class="sourceLineNo">1051</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.1051"></a>
-<span class="sourceLineNo">1052</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.1052"></a>
-<span class="sourceLineNo">1053</span>   * converted, if possible, to the type represented by the supplied<a name="line.1053"></a>
-<span class="sourceLineNo">1054</span>   * {@code type}.<a name="line.1054"></a>
-<span class="sourceLineNo">1055</span>   *<a name="line.1055"></a>
-<span class="sourceLineNo">1056</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.1056"></a>
-<span class="sourceLineNo">1057</span>   *<a name="line.1057"></a>
-<span class="sourceLineNo">1058</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.1058"></a>
-<span class="sourceLineNo">1059</span>   * value should be converted<a name="line.1059"></a>
-<span class="sourceLineNo">1060</span>   *<a name="line.1060"></a>
-<span class="sourceLineNo">1061</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.1061"></a>
-<span class="sourceLineNo">1062</span>   * configuration coordinates in effect for this request; may be<a name="line.1062"></a>
-<span class="sourceLineNo">1063</span>   * {@code null}<a name="line.1063"></a>
-<span class="sourceLineNo">1064</span>   *<a name="line.1064"></a>
-<span class="sourceLineNo">1065</span>   * @param names names of configuration properties for which a value<a name="line.1065"></a>
-<span class="sourceLineNo">1066</span>   * will be returned; each element will be tried in turn; must not be<a name="line.1066"></a>
-<span class="sourceLineNo">1067</span>   * {@code null}<a name="line.1067"></a>
-<span class="sourceLineNo">1068</span>   *<a name="line.1068"></a>
-<span class="sourceLineNo">1069</span>   * @param type a {@link Type} representing the type to which the<a name="line.1069"></a>
-<span class="sourceLineNo">1070</span>   * configuration value will be converted; must not be {@code null}<a name="line.1070"></a>
-<span class="sourceLineNo">1071</span>   *<a name="line.1071"></a>
-<span class="sourceLineNo">1072</span>   * @param defaultValue the value that will be converted and returned<a name="line.1072"></a>
-<span class="sourceLineNo">1073</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.1073"></a>
-<span class="sourceLineNo">1074</span>   *<a name="line.1074"></a>
-<span class="sourceLineNo">1075</span>   * @return the configuration value, or {@code null}<a name="line.1075"></a>
-<span class="sourceLineNo">1076</span>   *<a name="line.1076"></a>
-<span class="sourceLineNo">1077</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.1077"></a>
-<span class="sourceLineNo">1078</span>   * is {@code null}<a name="line.1078"></a>
-<span class="sourceLineNo">1079</span>   *<a name="line.1079"></a>
-<span class="sourceLineNo">1080</span>   * @exception ConversionException if type conversion could not occur<a name="line.1080"></a>
-<span class="sourceLineNo">1081</span>   * for any reason<a name="line.1081"></a>
-<span class="sourceLineNo">1082</span>   *<a name="line.1082"></a>
-<span class="sourceLineNo">1083</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.1083"></a>
-<span class="sourceLineNo">1084</span>   * values were found that could be suitable<a name="line.1084"></a>
-<span class="sourceLineNo">1085</span>   *<a name="line.1085"></a>
-<span class="sourceLineNo">1086</span>   * @see #getValue(Map, String, Type, String)<a name="line.1086"></a>
-<span class="sourceLineNo">1087</span>   */<a name="line.1087"></a>
-<span class="sourceLineNo">1088</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final Type type, final String defaultValue) {<a name="line.1088"></a>
-<span class="sourceLineNo">1089</span>    final String cn = this.getClass().getName();<a name="line.1089"></a>
-<span class="sourceLineNo">1090</span>    final Logger logger = Logger.getLogger(cn);<a name="line.1090"></a>
-<span class="sourceLineNo">1091</span>    final String mn = "getValue";<a name="line.1091"></a>
-<span class="sourceLineNo">1092</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1092"></a>
-<span class="sourceLineNo">1093</span>      logger.entering(cn, mn, new Object[] { configurationCoordinates, names, type, defaultValue });<a name="line.1093"></a>
-<span class="sourceLineNo">1094</span>    }<a name="line.1094"></a>
-<span class="sourceLineNo">1095</span><a name="line.1095"></a>
-<span class="sourceLineNo">1096</span>    T returnValue = null;<a name="line.1096"></a>
-<span class="sourceLineNo">1097</span>    if (names == null || names.isEmpty()) {<a name="line.1097"></a>
-<span class="sourceLineNo">1098</span>      returnValue = this.getValue(configurationCoordinates, (String)null, type, defaultValue);<a name="line.1098"></a>
-<span class="sourceLineNo">1099</span>    } else {<a name="line.1099"></a>
-<span class="sourceLineNo">1100</span>      // We need two passes.  The first pass will use null as a<a name="line.1100"></a>
-<span class="sourceLineNo">1101</span>      // default value and will keep going if null is returned by the<a name="line.1101"></a>
-<span class="sourceLineNo">1102</span>      // abstract getValue(Map, String, Type, String) implementation.<a name="line.1102"></a>
-<span class="sourceLineNo">1103</span>      for (final String name : names) {<a name="line.1103"></a>
-<span class="sourceLineNo">1104</span>        returnValue = this.getValue(configurationCoordinates, name, type, null);<a name="line.1104"></a>
-<span class="sourceLineNo">1105</span>        if (returnValue != null) {<a name="line.1105"></a>
-<span class="sourceLineNo">1106</span>          break;<a name="line.1106"></a>
-<span class="sourceLineNo">1107</span>        }<a name="line.1107"></a>
-<span class="sourceLineNo">1108</span>      }<a name="line.1108"></a>
-<span class="sourceLineNo">1109</span>      if (returnValue == null) {<a name="line.1109"></a>
-<span class="sourceLineNo">1110</span>        // We didn't find any values.  Do it again, but this time with<a name="line.1110"></a>
-<span class="sourceLineNo">1111</span>        // the defaultValue.<a name="line.1111"></a>
-<span class="sourceLineNo">1112</span>        for (final String name : names) {<a name="line.1112"></a>
-<span class="sourceLineNo">1113</span>          returnValue = this.getValue(configurationCoordinates, name, type, defaultValue);<a name="line.1113"></a>
-<span class="sourceLineNo">1114</span>          if (returnValue != null) {<a name="line.1114"></a>
-<span class="sourceLineNo">1115</span>            break;<a name="line.1115"></a>
-<span class="sourceLineNo">1116</span>          }<a name="line.1116"></a>
-<span class="sourceLineNo">1117</span>        }<a name="line.1117"></a>
-<span class="sourceLineNo">1118</span>      }<a name="line.1118"></a>
-<span class="sourceLineNo">1119</span>    }<a name="line.1119"></a>
-<span class="sourceLineNo">1120</span><a name="line.1120"></a>
-<span class="sourceLineNo">1121</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1121"></a>
-<span class="sourceLineNo">1122</span>      logger.exiting(cn, mn, returnValue);<a name="line.1122"></a>
-<span class="sourceLineNo">1123</span>    }<a name="line.1123"></a>
-<span class="sourceLineNo">1124</span>    return returnValue;<a name="line.1124"></a>
-<span class="sourceLineNo">1125</span>  }<a name="line.1125"></a>
-<span class="sourceLineNo">1126</span><a name="line.1126"></a>
-<span class="sourceLineNo">1127</span>  /**<a name="line.1127"></a>
-<span class="sourceLineNo">1128</span>   * Returns an {@linkplain Collections#unmodifiableSet(Set)<a name="line.1128"></a>
-<span class="sourceLineNo">1129</span>   * unmodifiable &lt;code&gt;Set&lt;/code&gt;} of names of {@link<a name="line.1129"></a>
-<span class="sourceLineNo">1130</span>   * ConfigurationValue}s that might be returned by this {@link<a name="line.1130"></a>
-<span class="sourceLineNo">1131</span>   * Configurations} instance.<a name="line.1131"></a>
-<span class="sourceLineNo">1132</span>   *<a name="line.1132"></a>
-<span class="sourceLineNo">1133</span>   * &lt;p&gt;Implementations of this method must not return {@code<a name="line.1133"></a>
-<span class="sourceLineNo">1134</span>   * null}.&lt;/p&gt;<a name="line.1134"></a>
-<span class="sourceLineNo">1135</span>   *<a name="line.1135"></a>
-<span class="sourceLineNo">1136</span>   * &lt;p&gt;Just because a name appears in the returned {@link Set} does<a name="line.1136"></a>
-<span class="sourceLineNo">1137</span>   * &lt;em&gt;not&lt;/em&gt; mean that a {@link ConfigurationValue} &lt;em&gt;will&lt;/em&gt;<a name="line.1137"></a>
-<span class="sourceLineNo">1138</span>   * be returned for it in a location in configuration space<a name="line.1138"></a>
-<span class="sourceLineNo">1139</span>   * identified by any arbitrary set of configuration coordinates.&lt;/p&gt;<a name="line.1139"></a>
-<span class="sourceLineNo">1140</span>   *<a name="line.1140"></a>
-<span class="sourceLineNo">1141</span>   * @return a non-{@code null} {@link Set} of names of {@link<a name="line.1141"></a>
-<span class="sourceLineNo">1142</span>   * ConfigurationValue}s<a name="line.1142"></a>
-<span class="sourceLineNo">1143</span>   */<a name="line.1143"></a>
-<span class="sourceLineNo">1144</span>  public abstract Set&lt;String&gt; getNames();<a name="line.1144"></a>
+<span class="sourceLineNo">849</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral, final String defaultValue) {<a name="line.849"></a>
+<span class="sourceLineNo">850</span>    return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);<a name="line.850"></a>
+<span class="sourceLineNo">851</span>  }<a name="line.851"></a>
+<span class="sourceLineNo">852</span><a name="line.852"></a>
+<span class="sourceLineNo">853</span>  /**<a name="line.853"></a>
+<span class="sourceLineNo">854</span>   * Returns a configuration value corresponding to the configuration<a name="line.854"></a>
+<span class="sourceLineNo">855</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.855"></a>
+<span class="sourceLineNo">856</span>   * possible, to the type represented by the supplied {@code<a name="line.856"></a>
+<span class="sourceLineNo">857</span>   * type}, or {@code null}.<a name="line.857"></a>
+<span class="sourceLineNo">858</span>   *<a name="line.858"></a>
+<span class="sourceLineNo">859</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.859"></a>
+<span class="sourceLineNo">860</span>   *<a name="line.860"></a>
+<span class="sourceLineNo">861</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.861"></a>
+<span class="sourceLineNo">862</span>   * value should be converted<a name="line.862"></a>
+<span class="sourceLineNo">863</span>   *<a name="line.863"></a>
+<span class="sourceLineNo">864</span>   * @param names names of configuration properties for which a value<a name="line.864"></a>
+<span class="sourceLineNo">865</span>   * will be returned; each element will be tried in turn; must not be<a name="line.865"></a>
+<span class="sourceLineNo">866</span>   * {@code null}<a name="line.866"></a>
+<span class="sourceLineNo">867</span>   *<a name="line.867"></a>
+<span class="sourceLineNo">868</span>   * @param type a {@link Class} representing the type to which the<a name="line.868"></a>
+<span class="sourceLineNo">869</span>   * configuration value will be converted; must not be {@code null}<a name="line.869"></a>
+<span class="sourceLineNo">870</span>   *<a name="line.870"></a>
+<span class="sourceLineNo">871</span>   * @return the configuration value, or {@code null}<a name="line.871"></a>
+<span class="sourceLineNo">872</span>   *<a name="line.872"></a>
+<span class="sourceLineNo">873</span>   * @exception NullPointerException if {@code names} or {@code type}<a name="line.873"></a>
+<span class="sourceLineNo">874</span>   * is {@code null}<a name="line.874"></a>
+<span class="sourceLineNo">875</span>   *<a name="line.875"></a>
+<span class="sourceLineNo">876</span>   * @exception ConversionException if type conversion could not occur<a name="line.876"></a>
+<span class="sourceLineNo">877</span>   * for any reason<a name="line.877"></a>
+<span class="sourceLineNo">878</span>   *<a name="line.878"></a>
+<span class="sourceLineNo">879</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.879"></a>
+<span class="sourceLineNo">880</span>   * values were found that could be suitable<a name="line.880"></a>
+<span class="sourceLineNo">881</span>   *<a name="line.881"></a>
+<span class="sourceLineNo">882</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.882"></a>
+<span class="sourceLineNo">883</span>   */<a name="line.883"></a>
+<span class="sourceLineNo">884</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final Class&lt;T&gt; type) {<a name="line.884"></a>
+<span class="sourceLineNo">885</span>    return this.getValue(this.getConfigurationCoordinates(), names, type, null);<a name="line.885"></a>
+<span class="sourceLineNo">886</span>  }<a name="line.886"></a>
+<span class="sourceLineNo">887</span><a name="line.887"></a>
+<span class="sourceLineNo">888</span>  /**<a name="line.888"></a>
+<span class="sourceLineNo">889</span>   * Returns a configuration value corresponding to the configuration<a name="line.889"></a>
+<span class="sourceLineNo">890</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.890"></a>
+<span class="sourceLineNo">891</span>   * possible, to the type represented by the supplied {@code<a name="line.891"></a>
+<span class="sourceLineNo">892</span>   * type}, or {@code null}.<a name="line.892"></a>
+<span class="sourceLineNo">893</span>   *<a name="line.893"></a>
+<span class="sourceLineNo">894</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.894"></a>
+<span class="sourceLineNo">895</span>   *<a name="line.895"></a>
+<span class="sourceLineNo">896</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.896"></a>
+<span class="sourceLineNo">897</span>   * value should be converted<a name="line.897"></a>
+<span class="sourceLineNo">898</span>   *<a name="line.898"></a>
+<span class="sourceLineNo">899</span>   * @param names names of configuration properties for which a value<a name="line.899"></a>
+<span class="sourceLineNo">900</span>   * will be returned; each element will be tried in turn; must not be<a name="line.900"></a>
+<span class="sourceLineNo">901</span>   * {@code null}<a name="line.901"></a>
+<span class="sourceLineNo">902</span>   *<a name="line.902"></a>
+<span class="sourceLineNo">903</span>   * @param type a {@link Type} representing the type to which the<a name="line.903"></a>
+<span class="sourceLineNo">904</span>   * configuration value will be converted; must not be {@code null}<a name="line.904"></a>
+<span class="sourceLineNo">905</span>   *<a name="line.905"></a>
+<span class="sourceLineNo">906</span>   * @return the configuration value, or {@code null}<a name="line.906"></a>
+<span class="sourceLineNo">907</span>   *<a name="line.907"></a>
+<span class="sourceLineNo">908</span>   * @exception NullPointerException if {@code names} or {@code type}<a name="line.908"></a>
+<span class="sourceLineNo">909</span>   * is {@code null}<a name="line.909"></a>
+<span class="sourceLineNo">910</span>   *<a name="line.910"></a>
+<span class="sourceLineNo">911</span>   * @exception ConversionException if type conversion could not occur<a name="line.911"></a>
+<span class="sourceLineNo">912</span>   * for any reason<a name="line.912"></a>
+<span class="sourceLineNo">913</span>   *<a name="line.913"></a>
+<span class="sourceLineNo">914</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.914"></a>
+<span class="sourceLineNo">915</span>   * values were found that could be suitable<a name="line.915"></a>
+<span class="sourceLineNo">916</span>   *<a name="line.916"></a>
+<span class="sourceLineNo">917</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.917"></a>
+<span class="sourceLineNo">918</span>   */<a name="line.918"></a>
+<span class="sourceLineNo">919</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final Type type) {<a name="line.919"></a>
+<span class="sourceLineNo">920</span>    return this.getValue(this.getConfigurationCoordinates(), names, type, null);<a name="line.920"></a>
+<span class="sourceLineNo">921</span>  }<a name="line.921"></a>
+<span class="sourceLineNo">922</span><a name="line.922"></a>
+<span class="sourceLineNo">923</span>  /**<a name="line.923"></a>
+<span class="sourceLineNo">924</span>   * Returns a configuration value corresponding to the configuration<a name="line.924"></a>
+<span class="sourceLineNo">925</span>   * property suitable for the supplied {@code names}, converted, if<a name="line.925"></a>
+<span class="sourceLineNo">926</span>   * possible, to the type represented by the supplied {@code<a name="line.926"></a>
+<span class="sourceLineNo">927</span>   * typeLiteral}, or {@code null}.<a name="line.927"></a>
+<span class="sourceLineNo">928</span>   *<a name="line.928"></a>
+<span class="sourceLineNo">929</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.929"></a>
+<span class="sourceLineNo">930</span>   *<a name="line.930"></a>
+<span class="sourceLineNo">931</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.931"></a>
+<span class="sourceLineNo">932</span>   * value should be converted<a name="line.932"></a>
+<span class="sourceLineNo">933</span>   *<a name="line.933"></a>
+<span class="sourceLineNo">934</span>   * @param names names of configuration properties for which a value<a name="line.934"></a>
+<span class="sourceLineNo">935</span>   * will be returned; each element will be tried in turn; must not be<a name="line.935"></a>
+<span class="sourceLineNo">936</span>   * {@code null}<a name="line.936"></a>
+<span class="sourceLineNo">937</span>   *<a name="line.937"></a>
+<span class="sourceLineNo">938</span>   * @param typeLiteral a {@link TypeLiteral} representing the type to which the<a name="line.938"></a>
+<span class="sourceLineNo">939</span>   * configuration value will be converted; must not be {@code null}<a name="line.939"></a>
+<span class="sourceLineNo">940</span>   *<a name="line.940"></a>
+<span class="sourceLineNo">941</span>   * @return the configuration value, or {@code null}<a name="line.941"></a>
+<span class="sourceLineNo">942</span>   *<a name="line.942"></a>
+<span class="sourceLineNo">943</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.943"></a>
+<span class="sourceLineNo">944</span>   * is {@code null}<a name="line.944"></a>
+<span class="sourceLineNo">945</span>   *<a name="line.945"></a>
+<span class="sourceLineNo">946</span>   * @exception ConversionException if type conversion could not occur<a name="line.946"></a>
+<span class="sourceLineNo">947</span>   * for any reason<a name="line.947"></a>
+<span class="sourceLineNo">948</span>   *<a name="line.948"></a>
+<span class="sourceLineNo">949</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.949"></a>
+<span class="sourceLineNo">950</span>   * values were found that could be suitable<a name="line.950"></a>
+<span class="sourceLineNo">951</span>   *<a name="line.951"></a>
+<span class="sourceLineNo">952</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.952"></a>
+<span class="sourceLineNo">953</span>   */<a name="line.953"></a>
+<span class="sourceLineNo">954</span>  public final &lt;T&gt; T getValue(final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral) {<a name="line.954"></a>
+<span class="sourceLineNo">955</span>    return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), null);<a name="line.955"></a>
+<span class="sourceLineNo">956</span>  }<a name="line.956"></a>
+<span class="sourceLineNo">957</span><a name="line.957"></a>
+<span class="sourceLineNo">958</span>  /**<a name="line.958"></a>
+<span class="sourceLineNo">959</span>   * Returns a configuration value corresponding to the configuration<a name="line.959"></a>
+<span class="sourceLineNo">960</span>   * property suitable for the supplied {@code<a name="line.960"></a>
+<span class="sourceLineNo">961</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.961"></a>
+<span class="sourceLineNo">962</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.962"></a>
+<span class="sourceLineNo">963</span>   * converted, if possible, to the type represented by the supplied<a name="line.963"></a>
+<span class="sourceLineNo">964</span>   * {@code type}.<a name="line.964"></a>
+<span class="sourceLineNo">965</span>   *<a name="line.965"></a>
+<span class="sourceLineNo">966</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.966"></a>
+<span class="sourceLineNo">967</span>   *<a name="line.967"></a>
+<span class="sourceLineNo">968</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.968"></a>
+<span class="sourceLineNo">969</span>   * value should be converted<a name="line.969"></a>
+<span class="sourceLineNo">970</span>   *<a name="line.970"></a>
+<span class="sourceLineNo">971</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.971"></a>
+<span class="sourceLineNo">972</span>   * configuration coordinates in effect for this request; may be<a name="line.972"></a>
+<span class="sourceLineNo">973</span>   * {@code null}<a name="line.973"></a>
+<span class="sourceLineNo">974</span>   *<a name="line.974"></a>
+<span class="sourceLineNo">975</span>   * @param names names of configuration properties for which a value<a name="line.975"></a>
+<span class="sourceLineNo">976</span>   * will be returned; each element will be tried in turn; must not be<a name="line.976"></a>
+<span class="sourceLineNo">977</span>   * {@code null}<a name="line.977"></a>
+<span class="sourceLineNo">978</span>   *<a name="line.978"></a>
+<span class="sourceLineNo">979</span>   * @param type a {@link Class} representing the type to which the<a name="line.979"></a>
+<span class="sourceLineNo">980</span>   * configuration value will be converted; must not be {@code null}<a name="line.980"></a>
+<span class="sourceLineNo">981</span>   *<a name="line.981"></a>
+<span class="sourceLineNo">982</span>   * @param defaultValue the value that will be converted and returned<a name="line.982"></a>
+<span class="sourceLineNo">983</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.983"></a>
+<span class="sourceLineNo">984</span>   *<a name="line.984"></a>
+<span class="sourceLineNo">985</span>   * @return the configuration value, or {@code null}<a name="line.985"></a>
+<span class="sourceLineNo">986</span>   *<a name="line.986"></a>
+<span class="sourceLineNo">987</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.987"></a>
+<span class="sourceLineNo">988</span>   * is {@code null}<a name="line.988"></a>
+<span class="sourceLineNo">989</span>   *<a name="line.989"></a>
+<span class="sourceLineNo">990</span>   * @exception ConversionException if type conversion could not occur<a name="line.990"></a>
+<span class="sourceLineNo">991</span>   * for any reason<a name="line.991"></a>
+<span class="sourceLineNo">992</span>   *<a name="line.992"></a>
+<span class="sourceLineNo">993</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.993"></a>
+<span class="sourceLineNo">994</span>   * values were found that could be suitable<a name="line.994"></a>
+<span class="sourceLineNo">995</span>   *<a name="line.995"></a>
+<span class="sourceLineNo">996</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.996"></a>
+<span class="sourceLineNo">997</span>   */<a name="line.997"></a>
+<span class="sourceLineNo">998</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final Class&lt;T&gt; type, final String defaultValue) {<a name="line.998"></a>
+<span class="sourceLineNo">999</span>    return this.getValue(configurationCoordinates, names, (Type)type, defaultValue);<a name="line.999"></a>
+<span class="sourceLineNo">1000</span>  }<a name="line.1000"></a>
+<span class="sourceLineNo">1001</span><a name="line.1001"></a>
+<span class="sourceLineNo">1002</span>   /**<a name="line.1002"></a>
+<span class="sourceLineNo">1003</span>   * Returns a configuration value corresponding to the configuration<a name="line.1003"></a>
+<span class="sourceLineNo">1004</span>   * property suitable for the supplied {@code<a name="line.1004"></a>
+<span class="sourceLineNo">1005</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.1005"></a>
+<span class="sourceLineNo">1006</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.1006"></a>
+<span class="sourceLineNo">1007</span>   * converted, if possible, to the type represented by the supplied<a name="line.1007"></a>
+<span class="sourceLineNo">1008</span>   * {@code type}.<a name="line.1008"></a>
+<span class="sourceLineNo">1009</span>   *<a name="line.1009"></a>
+<span class="sourceLineNo">1010</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.1010"></a>
+<span class="sourceLineNo">1011</span>   *<a name="line.1011"></a>
+<span class="sourceLineNo">1012</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.1012"></a>
+<span class="sourceLineNo">1013</span>   * value should be converted<a name="line.1013"></a>
+<span class="sourceLineNo">1014</span>   *<a name="line.1014"></a>
+<span class="sourceLineNo">1015</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.1015"></a>
+<span class="sourceLineNo">1016</span>   * configuration coordinates in effect for this request; may be<a name="line.1016"></a>
+<span class="sourceLineNo">1017</span>   * {@code null}<a name="line.1017"></a>
+<span class="sourceLineNo">1018</span>   *<a name="line.1018"></a>
+<span class="sourceLineNo">1019</span>   * @param names names of configuration properties for which a value<a name="line.1019"></a>
+<span class="sourceLineNo">1020</span>   * will be returned; each element will be tried in turn; must not be<a name="line.1020"></a>
+<span class="sourceLineNo">1021</span>   * {@code null}<a name="line.1021"></a>
+<span class="sourceLineNo">1022</span>   *<a name="line.1022"></a>
+<span class="sourceLineNo">1023</span>   * @param typeLiteral a {@link TypeLiteral} representing the type to which<a name="line.1023"></a>
+<span class="sourceLineNo">1024</span>   * the configuration value will be converted; must not be {@code<a name="line.1024"></a>
+<span class="sourceLineNo">1025</span>   * null}<a name="line.1025"></a>
+<span class="sourceLineNo">1026</span>   *<a name="line.1026"></a>
+<span class="sourceLineNo">1027</span>   * @param defaultValue the value that will be converted and returned<a name="line.1027"></a>
+<span class="sourceLineNo">1028</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.1028"></a>
+<span class="sourceLineNo">1029</span>   *<a name="line.1029"></a>
+<span class="sourceLineNo">1030</span>   * @return the configuration value, or {@code null}<a name="line.1030"></a>
+<span class="sourceLineNo">1031</span>   *<a name="line.1031"></a>
+<span class="sourceLineNo">1032</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.1032"></a>
+<span class="sourceLineNo">1033</span>   * is {@code null}<a name="line.1033"></a>
+<span class="sourceLineNo">1034</span>   *<a name="line.1034"></a>
+<span class="sourceLineNo">1035</span>   * @exception ConversionException if type conversion could not occur<a name="line.1035"></a>
+<span class="sourceLineNo">1036</span>   * for any reason<a name="line.1036"></a>
+<span class="sourceLineNo">1037</span>   *<a name="line.1037"></a>
+<span class="sourceLineNo">1038</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.1038"></a>
+<span class="sourceLineNo">1039</span>   * values were found that could be suitable<a name="line.1039"></a>
+<span class="sourceLineNo">1040</span>   *<a name="line.1040"></a>
+<span class="sourceLineNo">1041</span>   * @see #getValue(Map, Collection, Type, String)<a name="line.1041"></a>
+<span class="sourceLineNo">1042</span>   */<a name="line.1042"></a>
+<span class="sourceLineNo">1043</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final TypeLiteral&lt;T&gt; typeLiteral, final String defaultValue) {<a name="line.1043"></a>
+<span class="sourceLineNo">1044</span>    return this.getValue(configurationCoordinates, names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);<a name="line.1044"></a>
+<span class="sourceLineNo">1045</span>  }<a name="line.1045"></a>
+<span class="sourceLineNo">1046</span><a name="line.1046"></a>
+<span class="sourceLineNo">1047</span>  /**<a name="line.1047"></a>
+<span class="sourceLineNo">1048</span>   * Returns a configuration value corresponding to the configuration<a name="line.1048"></a>
+<span class="sourceLineNo">1049</span>   * property suitable for the supplied {@code<a name="line.1049"></a>
+<span class="sourceLineNo">1050</span>   * configurationCoordinates} and {@code names}, or the supplied<a name="line.1050"></a>
+<span class="sourceLineNo">1051</span>   * {@code defaultValue} if {@code null} would otherwise be returned,<a name="line.1051"></a>
+<span class="sourceLineNo">1052</span>   * converted, if possible, to the type represented by the supplied<a name="line.1052"></a>
+<span class="sourceLineNo">1053</span>   * {@code type}.<a name="line.1053"></a>
+<span class="sourceLineNo">1054</span>   *<a name="line.1054"></a>
+<span class="sourceLineNo">1055</span>   * &lt;p&gt;This method may return {@code null}.&lt;/p&gt;<a name="line.1055"></a>
+<span class="sourceLineNo">1056</span>   *<a name="line.1056"></a>
+<span class="sourceLineNo">1057</span>   * @param &lt;T&gt; the type to which a {@link String}-typed configuration<a name="line.1057"></a>
+<span class="sourceLineNo">1058</span>   * value should be converted<a name="line.1058"></a>
+<span class="sourceLineNo">1059</span>   *<a name="line.1059"></a>
+<span class="sourceLineNo">1060</span>   * @param configurationCoordinates a {@link Map} representing the<a name="line.1060"></a>
+<span class="sourceLineNo">1061</span>   * configuration coordinates in effect for this request; may be<a name="line.1061"></a>
+<span class="sourceLineNo">1062</span>   * {@code null}<a name="line.1062"></a>
+<span class="sourceLineNo">1063</span>   *<a name="line.1063"></a>
+<span class="sourceLineNo">1064</span>   * @param names names of configuration properties for which a value<a name="line.1064"></a>
+<span class="sourceLineNo">1065</span>   * will be returned; each element will be tried in turn; must not be<a name="line.1065"></a>
+<span class="sourceLineNo">1066</span>   * {@code null}<a name="line.1066"></a>
+<span class="sourceLineNo">1067</span>   *<a name="line.1067"></a>
+<span class="sourceLineNo">1068</span>   * @param type a {@link Type} representing the type to which the<a name="line.1068"></a>
+<span class="sourceLineNo">1069</span>   * configuration value will be converted; must not be {@code null}<a name="line.1069"></a>
+<span class="sourceLineNo">1070</span>   *<a name="line.1070"></a>
+<span class="sourceLineNo">1071</span>   * @param defaultValue the value that will be converted and returned<a name="line.1071"></a>
+<span class="sourceLineNo">1072</span>   * if {@code null} would otherwise be returned; may be {@code null}<a name="line.1072"></a>
+<span class="sourceLineNo">1073</span>   *<a name="line.1073"></a>
+<span class="sourceLineNo">1074</span>   * @return the configuration value, or {@code null}<a name="line.1074"></a>
+<span class="sourceLineNo">1075</span>   *<a name="line.1075"></a>
+<span class="sourceLineNo">1076</span>   * @exception NullPointerException if {@code name} or {@code type}<a name="line.1076"></a>
+<span class="sourceLineNo">1077</span>   * is {@code null}<a name="line.1077"></a>
+<span class="sourceLineNo">1078</span>   *<a name="line.1078"></a>
+<span class="sourceLineNo">1079</span>   * @exception ConversionException if type conversion could not occur<a name="line.1079"></a>
+<span class="sourceLineNo">1080</span>   * for any reason<a name="line.1080"></a>
+<span class="sourceLineNo">1081</span>   *<a name="line.1081"></a>
+<span class="sourceLineNo">1082</span>   * @exception AmbiguousConfigurationValuesException if two or more<a name="line.1082"></a>
+<span class="sourceLineNo">1083</span>   * values were found that could be suitable<a name="line.1083"></a>
+<span class="sourceLineNo">1084</span>   *<a name="line.1084"></a>
+<span class="sourceLineNo">1085</span>   * @see #getValue(Map, String, Type, String)<a name="line.1085"></a>
+<span class="sourceLineNo">1086</span>   */<a name="line.1086"></a>
+<span class="sourceLineNo">1087</span>  public final &lt;T&gt; T getValue(final Map&lt;String, String&gt; configurationCoordinates, final Collection&lt;String&gt; names, final Type type, final String defaultValue) {<a name="line.1087"></a>
+<span class="sourceLineNo">1088</span>    final String cn = this.getClass().getName();<a name="line.1088"></a>
+<span class="sourceLineNo">1089</span>    final Logger logger = Logger.getLogger(cn);<a name="line.1089"></a>
+<span class="sourceLineNo">1090</span>    final String mn = "getValue";<a name="line.1090"></a>
+<span class="sourceLineNo">1091</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1091"></a>
+<span class="sourceLineNo">1092</span>      logger.entering(cn, mn, new Object[] { configurationCoordinates, names, type, defaultValue });<a name="line.1092"></a>
+<span class="sourceLineNo">1093</span>    }<a name="line.1093"></a>
+<span class="sourceLineNo">1094</span><a name="line.1094"></a>
+<span class="sourceLineNo">1095</span>    T returnValue = null;<a name="line.1095"></a>
+<span class="sourceLineNo">1096</span>    if (names == null || names.isEmpty()) {<a name="line.1096"></a>
+<span class="sourceLineNo">1097</span>      returnValue = this.getValue(configurationCoordinates, (String)null, type, defaultValue);<a name="line.1097"></a>
+<span class="sourceLineNo">1098</span>    } else {<a name="line.1098"></a>
+<span class="sourceLineNo">1099</span>      // We need two passes.  The first pass will use null as a<a name="line.1099"></a>
+<span class="sourceLineNo">1100</span>      // default value and will keep going if null is returned by the<a name="line.1100"></a>
+<span class="sourceLineNo">1101</span>      // abstract getValue(Map, String, Type, String) implementation.<a name="line.1101"></a>
+<span class="sourceLineNo">1102</span>      for (final String name : names) {<a name="line.1102"></a>
+<span class="sourceLineNo">1103</span>        returnValue = this.getValue(configurationCoordinates, name, type, null);<a name="line.1103"></a>
+<span class="sourceLineNo">1104</span>        if (returnValue != null) {<a name="line.1104"></a>
+<span class="sourceLineNo">1105</span>          break;<a name="line.1105"></a>
+<span class="sourceLineNo">1106</span>        }<a name="line.1106"></a>
+<span class="sourceLineNo">1107</span>      }<a name="line.1107"></a>
+<span class="sourceLineNo">1108</span>      if (returnValue == null) {<a name="line.1108"></a>
+<span class="sourceLineNo">1109</span>        // We didn't find any values.  Do it again, but this time with<a name="line.1109"></a>
+<span class="sourceLineNo">1110</span>        // the defaultValue.<a name="line.1110"></a>
+<span class="sourceLineNo">1111</span>        for (final String name : names) {<a name="line.1111"></a>
+<span class="sourceLineNo">1112</span>          returnValue = this.getValue(configurationCoordinates, name, type, defaultValue);<a name="line.1112"></a>
+<span class="sourceLineNo">1113</span>          if (returnValue != null) {<a name="line.1113"></a>
+<span class="sourceLineNo">1114</span>            break;<a name="line.1114"></a>
+<span class="sourceLineNo">1115</span>          }<a name="line.1115"></a>
+<span class="sourceLineNo">1116</span>        }<a name="line.1116"></a>
+<span class="sourceLineNo">1117</span>      }<a name="line.1117"></a>
+<span class="sourceLineNo">1118</span>    }<a name="line.1118"></a>
+<span class="sourceLineNo">1119</span><a name="line.1119"></a>
+<span class="sourceLineNo">1120</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1120"></a>
+<span class="sourceLineNo">1121</span>      logger.exiting(cn, mn, returnValue);<a name="line.1121"></a>
+<span class="sourceLineNo">1122</span>    }<a name="line.1122"></a>
+<span class="sourceLineNo">1123</span>    return returnValue;<a name="line.1123"></a>
+<span class="sourceLineNo">1124</span>  }<a name="line.1124"></a>
+<span class="sourceLineNo">1125</span><a name="line.1125"></a>
+<span class="sourceLineNo">1126</span>  /**<a name="line.1126"></a>
+<span class="sourceLineNo">1127</span>   * Returns an {@linkplain Collections#unmodifiableSet(Set)<a name="line.1127"></a>
+<span class="sourceLineNo">1128</span>   * unmodifiable &lt;code&gt;Set&lt;/code&gt;} of names of {@link<a name="line.1128"></a>
+<span class="sourceLineNo">1129</span>   * ConfigurationValue}s that might be returned by this {@link<a name="line.1129"></a>
+<span class="sourceLineNo">1130</span>   * Configurations} instance.<a name="line.1130"></a>
+<span class="sourceLineNo">1131</span>   *<a name="line.1131"></a>
+<span class="sourceLineNo">1132</span>   * &lt;p&gt;Implementations of this method must not return {@code<a name="line.1132"></a>
+<span class="sourceLineNo">1133</span>   * null}.&lt;/p&gt;<a name="line.1133"></a>
+<span class="sourceLineNo">1134</span>   *<a name="line.1134"></a>
+<span class="sourceLineNo">1135</span>   * &lt;p&gt;Just because a name appears in the returned {@link Set} does<a name="line.1135"></a>
+<span class="sourceLineNo">1136</span>   * &lt;em&gt;not&lt;/em&gt; mean that a {@link ConfigurationValue} &lt;em&gt;will&lt;/em&gt;<a name="line.1136"></a>
+<span class="sourceLineNo">1137</span>   * be returned for it in a location in configuration space<a name="line.1137"></a>
+<span class="sourceLineNo">1138</span>   * identified by any arbitrary set of configuration coordinates.&lt;/p&gt;<a name="line.1138"></a>
+<span class="sourceLineNo">1139</span>   *<a name="line.1139"></a>
+<span class="sourceLineNo">1140</span>   * @return a non-{@code null} {@link Set} of names of {@link<a name="line.1140"></a>
+<span class="sourceLineNo">1141</span>   * ConfigurationValue}s<a name="line.1141"></a>
+<span class="sourceLineNo">1142</span>   */<a name="line.1142"></a>
+<span class="sourceLineNo">1143</span>  public abstract Set&lt;String&gt; getNames();<a name="line.1143"></a>
+<span class="sourceLineNo">1144</span><a name="line.1144"></a>
 <span class="sourceLineNo">1145</span><a name="line.1145"></a>
-<span class="sourceLineNo">1146</span><a name="line.1146"></a>
-<span class="sourceLineNo">1147</span>  /*<a name="line.1147"></a>
-<span class="sourceLineNo">1148</span>   * Static methods.<a name="line.1148"></a>
-<span class="sourceLineNo">1149</span>   */<a name="line.1149"></a>
+<span class="sourceLineNo">1146</span>  /*<a name="line.1146"></a>
+<span class="sourceLineNo">1147</span>   * Static methods.<a name="line.1147"></a>
+<span class="sourceLineNo">1148</span>   */<a name="line.1148"></a>
+<span class="sourceLineNo">1149</span><a name="line.1149"></a>
 <span class="sourceLineNo">1150</span><a name="line.1150"></a>
-<span class="sourceLineNo">1151</span><a name="line.1151"></a>
-<span class="sourceLineNo">1152</span>  /**<a name="line.1152"></a>
-<span class="sourceLineNo">1153</span>   * Returns a {@link Configurations} implementation found using the<a name="line.1153"></a>
-<span class="sourceLineNo">1154</span>   * standard {@link ServiceLoader} mechanism.<a name="line.1154"></a>
-<span class="sourceLineNo">1155</span>   *<a name="line.1155"></a>
-<span class="sourceLineNo">1156</span>   * &lt;p&gt;The first entry in the first classpath resource named {@code<a name="line.1156"></a>
-<span class="sourceLineNo">1157</span>   * META-INF/services/org.microbean.configuration.api.Configurations}<a name="line.1157"></a>
-<span class="sourceLineNo">1158</span>   * will be treated as a class name, loaded and instantiated, and<a name="line.1158"></a>
-<span class="sourceLineNo">1159</span>   * returned.&lt;/p&gt;<a name="line.1159"></a>
-<span class="sourceLineNo">1160</span>   *<a name="line.1160"></a>
-<span class="sourceLineNo">1161</span>   * @return a non-{@code null} {@link Configurations} instance<a name="line.1161"></a>
-<span class="sourceLineNo">1162</span>   *<a name="line.1162"></a>
-<span class="sourceLineNo">1163</span>   * @exception ConfigurationException if there was no implementation<a name="line.1163"></a>
-<span class="sourceLineNo">1164</span>   * found<a name="line.1164"></a>
-<span class="sourceLineNo">1165</span>   *<a name="line.1165"></a>
-<span class="sourceLineNo">1166</span>   * @see ServiceLoader<a name="line.1166"></a>
-<span class="sourceLineNo">1167</span>   */<a name="line.1167"></a>
-<span class="sourceLineNo">1168</span>  public static final Configurations newInstance() {<a name="line.1168"></a>
-<span class="sourceLineNo">1169</span>    final String cn = Configurations.class.getName();<a name="line.1169"></a>
-<span class="sourceLineNo">1170</span>    final Logger logger = Logger.getLogger(cn);<a name="line.1170"></a>
-<span class="sourceLineNo">1171</span>    final String mn = "newInstance";<a name="line.1171"></a>
-<span class="sourceLineNo">1172</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1172"></a>
-<span class="sourceLineNo">1173</span>      logger.entering(cn, mn);<a name="line.1173"></a>
-<span class="sourceLineNo">1174</span>    }<a name="line.1174"></a>
-<span class="sourceLineNo">1175</span>    Configurations returnValue = null;<a name="line.1175"></a>
-<span class="sourceLineNo">1176</span>    ServiceLoader&lt;Configurations&gt; configurationsLoader = Configurations.configurationsLoader;<a name="line.1176"></a>
-<span class="sourceLineNo">1177</span>    if (configurationsLoader == null) {<a name="line.1177"></a>
-<span class="sourceLineNo">1178</span>      configurationsLoader = ServiceLoader.load(Configurations.class);<a name="line.1178"></a>
-<span class="sourceLineNo">1179</span>      assert configurationsLoader != null;<a name="line.1179"></a>
-<span class="sourceLineNo">1180</span>      Configurations.configurationsLoader = configurationsLoader;<a name="line.1180"></a>
-<span class="sourceLineNo">1181</span>    }<a name="line.1181"></a>
-<span class="sourceLineNo">1182</span>    final Iterator&lt;Configurations&gt; configurationsIterator = configurationsLoader.iterator();<a name="line.1182"></a>
-<span class="sourceLineNo">1183</span>    assert configurationsIterator != null;<a name="line.1183"></a>
-<span class="sourceLineNo">1184</span>    while (returnValue == null &amp;&amp; configurationsIterator.hasNext()) {<a name="line.1184"></a>
-<span class="sourceLineNo">1185</span>      try {<a name="line.1185"></a>
-<span class="sourceLineNo">1186</span>        returnValue = configurationsIterator.next();<a name="line.1186"></a>
-<span class="sourceLineNo">1187</span>      } catch (final ServiceConfigurationError badServiceProviderFile) {<a name="line.1187"></a>
-<span class="sourceLineNo">1188</span>        throw new ConfigurationException(badServiceProviderFile);<a name="line.1188"></a>
-<span class="sourceLineNo">1189</span>      }<a name="line.1189"></a>
-<span class="sourceLineNo">1190</span>    }<a name="line.1190"></a>
-<span class="sourceLineNo">1191</span>    if (returnValue == null) {<a name="line.1191"></a>
-<span class="sourceLineNo">1192</span>      throw new ConfigurationException("No " + Configurations.class.getName() + " implementation found in any META-INF/services/" + Configurations.class.getName() + " service provider resources");<a name="line.1192"></a>
-<span class="sourceLineNo">1193</span>    }<a name="line.1193"></a>
-<span class="sourceLineNo">1194</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1194"></a>
-<span class="sourceLineNo">1195</span>      logger.exiting(cn, mn, returnValue);<a name="line.1195"></a>
-<span class="sourceLineNo">1196</span>    }<a name="line.1196"></a>
-<span class="sourceLineNo">1197</span>    return returnValue;<a name="line.1197"></a>
-<span class="sourceLineNo">1198</span>  }<a name="line.1198"></a>
-<span class="sourceLineNo">1199</span><a name="line.1199"></a>
-<span class="sourceLineNo">1200</span>}<a name="line.1200"></a>
+<span class="sourceLineNo">1151</span>  /**<a name="line.1151"></a>
+<span class="sourceLineNo">1152</span>   * Returns a {@link Configurations} implementation found using the<a name="line.1152"></a>
+<span class="sourceLineNo">1153</span>   * standard {@link ServiceLoader} mechanism.<a name="line.1153"></a>
+<span class="sourceLineNo">1154</span>   *<a name="line.1154"></a>
+<span class="sourceLineNo">1155</span>   * &lt;p&gt;The first entry in the first classpath resource named {@code<a name="line.1155"></a>
+<span class="sourceLineNo">1156</span>   * META-INF/services/org.microbean.configuration.api.Configurations}<a name="line.1156"></a>
+<span class="sourceLineNo">1157</span>   * will be treated as a class name, loaded and instantiated, and<a name="line.1157"></a>
+<span class="sourceLineNo">1158</span>   * returned.&lt;/p&gt;<a name="line.1158"></a>
+<span class="sourceLineNo">1159</span>   *<a name="line.1159"></a>
+<span class="sourceLineNo">1160</span>   * @return a non-{@code null} {@link Configurations} instance<a name="line.1160"></a>
+<span class="sourceLineNo">1161</span>   *<a name="line.1161"></a>
+<span class="sourceLineNo">1162</span>   * @exception ConfigurationException if there was no implementation<a name="line.1162"></a>
+<span class="sourceLineNo">1163</span>   * found<a name="line.1163"></a>
+<span class="sourceLineNo">1164</span>   *<a name="line.1164"></a>
+<span class="sourceLineNo">1165</span>   * @see ServiceLoader<a name="line.1165"></a>
+<span class="sourceLineNo">1166</span>   */<a name="line.1166"></a>
+<span class="sourceLineNo">1167</span>  public static final Configurations newInstance() {<a name="line.1167"></a>
+<span class="sourceLineNo">1168</span>    final String cn = Configurations.class.getName();<a name="line.1168"></a>
+<span class="sourceLineNo">1169</span>    final Logger logger = Logger.getLogger(cn);<a name="line.1169"></a>
+<span class="sourceLineNo">1170</span>    final String mn = "newInstance";<a name="line.1170"></a>
+<span class="sourceLineNo">1171</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1171"></a>
+<span class="sourceLineNo">1172</span>      logger.entering(cn, mn);<a name="line.1172"></a>
+<span class="sourceLineNo">1173</span>    }<a name="line.1173"></a>
+<span class="sourceLineNo">1174</span>    Configurations returnValue = null;<a name="line.1174"></a>
+<span class="sourceLineNo">1175</span>    ServiceLoader&lt;Configurations&gt; configurationsLoader = Configurations.configurationsLoader;<a name="line.1175"></a>
+<span class="sourceLineNo">1176</span>    if (configurationsLoader == null) {<a name="line.1176"></a>
+<span class="sourceLineNo">1177</span>      configurationsLoader = ServiceLoader.load(Configurations.class);<a name="line.1177"></a>
+<span class="sourceLineNo">1178</span>      assert configurationsLoader != null;<a name="line.1178"></a>
+<span class="sourceLineNo">1179</span>      Configurations.configurationsLoader = configurationsLoader;<a name="line.1179"></a>
+<span class="sourceLineNo">1180</span>    }<a name="line.1180"></a>
+<span class="sourceLineNo">1181</span>    final Iterator&lt;Configurations&gt; configurationsIterator = configurationsLoader.iterator();<a name="line.1181"></a>
+<span class="sourceLineNo">1182</span>    assert configurationsIterator != null;<a name="line.1182"></a>
+<span class="sourceLineNo">1183</span>    while (returnValue == null &amp;&amp; configurationsIterator.hasNext()) {<a name="line.1183"></a>
+<span class="sourceLineNo">1184</span>      try {<a name="line.1184"></a>
+<span class="sourceLineNo">1185</span>        returnValue = configurationsIterator.next();<a name="line.1185"></a>
+<span class="sourceLineNo">1186</span>      } catch (final ServiceConfigurationError badServiceProviderFile) {<a name="line.1186"></a>
+<span class="sourceLineNo">1187</span>        throw new ConfigurationException(badServiceProviderFile);<a name="line.1187"></a>
+<span class="sourceLineNo">1188</span>      }<a name="line.1188"></a>
+<span class="sourceLineNo">1189</span>    }<a name="line.1189"></a>
+<span class="sourceLineNo">1190</span>    if (returnValue == null) {<a name="line.1190"></a>
+<span class="sourceLineNo">1191</span>      throw new ConfigurationException("No " + Configurations.class.getName() + " implementation found in any META-INF/services/" + Configurations.class.getName() + " service provider resources");<a name="line.1191"></a>
+<span class="sourceLineNo">1192</span>    }<a name="line.1192"></a>
+<span class="sourceLineNo">1193</span>    if (logger.isLoggable(Level.FINER)) {<a name="line.1193"></a>
+<span class="sourceLineNo">1194</span>      logger.exiting(cn, mn, returnValue);<a name="line.1194"></a>
+<span class="sourceLineNo">1195</span>    }<a name="line.1195"></a>
+<span class="sourceLineNo">1196</span>    return returnValue;<a name="line.1196"></a>
+<span class="sourceLineNo">1197</span>  }<a name="line.1197"></a>
+<span class="sourceLineNo">1198</span><a name="line.1198"></a>
+<span class="sourceLineNo">1199</span>}<a name="line.1199"></a>
 
 
 
