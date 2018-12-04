@@ -846,7 +846,6 @@ public abstract class Configurations {
     return this.getValue(this.getConfigurationCoordinates(), names, type, defaultValue);
   }
 
-
   public final <T> T getValue(final Collection<String> names, final TypeLiteral<T> typeLiteral, final String defaultValue) {
     return this.getValue(this.getConfigurationCoordinates(), names, typeLiteral == null ? (Type)null : typeLiteral.getType(), defaultValue);
   }
